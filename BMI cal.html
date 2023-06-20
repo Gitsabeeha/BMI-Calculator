@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+</head>
+<style>
+    body{
+        background-color: violet;
+    }
+    #btn{
+        background-color: rgb(233, 160, 134);
+        font-size: 150%;
+        border: 2px solid green;
+        border-radius: 50px;
+    }
+    #btn:hover{
+        background-color: orange;
+        color: green;
+    }
+    #height{
+        height: 30px;
+        border-radius: 40px;
+        color: green;
+    }
+    #weight{
+        height: 30px;
+        border-radius: 40px;
+        color: green;
+    }
+</style>
+<body>
+
+    <h1>BMI Calculator</h1>
+    <label for="height">Enter Your Height in centimeter</label>
+    <input type="number"id="height" >
+    <br>
+    <br>   
+     <label for="weight">Enter Your Weight in kg</label>
+    <input type="number"id="weight">
+    <br>
+    <br> 
+    <button id="btn">Compute BMI</button>
+     <script>
+       
+       
+       const button=document.getElementById('btn');
+
+       
+
+       button.addEventListener('click',function() {
+        const height=document.getElementById('height');
+        const weight=document.getElementById('weight');
+
+        const heightinput=height.value;
+       const weightinput=weight.value;
+        const bmiValue=(weightinput/((heightinput / 100)*(heightinput / 100))).toFixed(2);
+
+      const result=document.createElement('div');
+  
+      
+
+      if (!heightinput || !weightinput) {
+                result.textContent = 'PLEASE FILL THE ABOVE FORM';
+            } else {
+                result.textContent = `YOUR BMI IS ${bmiValue}`;
+                if (bmiValue < 18.5) {
+                    result.textContent += ' - Underweight';
+                } else if (bmiValue >= 18.5 && bmiValue < 25) {
+                    result.textContent += ' - Normal weight';
+                } else if (bmiValue >= 25 && bmiValue < 30) {
+                    result.textContent += ' - Overweight';
+                } else {
+                    result.textContent += ' - Obesity';
+                }
+            }
+         
+                 document.body.appendChild(result);
+
+                 
+
+       })
+
+     </script>
+    
+</body>
+</html>
